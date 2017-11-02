@@ -9,5 +9,17 @@ block content
 					a(href='/blog') Read Now.
 			br
 			br
-			.content-bar
-				h3 Subscribe Right Now: 
+		#middle
+			.content-bar: .form-inline
+				if enquirySubmitted
+					h3 Thanks for subscribing!
+				else
+					form(method='post')
+						label Subscribe Now! 
+						input(type='hidden', name='action', value='contact')
+						.form-group(class=validationErrors.email ? 'has-error' : null)
+							input(type='email', name='email', value=formData.email, placeholder="Email").form-control
+						.form-actions.form-group
+							button(type='submit').btn.btn-primary Send
+		#bottom
+			br
